@@ -10,8 +10,6 @@ public class SingleConnectionBanco {
 	private static String senha = "admin";
 	private static Connection connection = null;
 	
-	
-	
 	public static Connection getConnection() {
 		return connection;
 	}
@@ -20,24 +18,23 @@ public class SingleConnectionBanco {
 		conectar();
 	}
 	
-	
-	public SingleConnectionBanco() {/*quando tiver um instancia vai conectar*/
+	public SingleConnectionBanco() {
 		conectar();
 	}
 	
-	
 	private static void conectar() {
-		
 		try {
 			
-			if(connection == null) {
-				Class.forName("org.postgresql.Driver"); /*Carrega o driver de conexão do banco*/
+			if(connection == null ){
+				
+				Class.forName("org.postgresql.Driver");
 				connection = DriverManager.getConnection(banco, user, senha);
-				connection.setAutoCommit(false); /*para nao efetuar alteracoes no banco sem nosso comando*/
+				connection.setAutoCommit(false);
+				
 			}
 			
-		}catch (Exception e) {
-			e.printStackTrace();/*Mostrar qualquer erro no momento de conectar*/
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
